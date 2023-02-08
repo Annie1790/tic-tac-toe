@@ -1,0 +1,34 @@
+/*Body and mobile version styles*/
+
+/*Desktop*/
+* {
+    box-sizing: border-box;
+    color: rgb(94, 94, 94);
+    font-family:'Courier New', Courier, monospace;
+}
+
+body {
+margin: 0px;
+background-color: papayawhip;
+}
+
+.table-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cells {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(127, 255, 212, 0.538);
+}
+
+/*Mobile*/
+
+@media screen and (max-width: 600px) {
+    .cells {
+        width: 100px;
+        height: 100px;
+    }
+}
