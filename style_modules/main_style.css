@@ -7,3 +7,25 @@
     padding: 16px;
     font-size: 40px;
 }
+
+td {
+    cursor: pointer;
+}
+
+.restart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.restart-button > button {
+    font-size: 18px;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
