@@ -1,8 +1,8 @@
 import ui from "./ui.js";
 
 export class Player {
-    constructor(player, symbol) {
-      this.player = player;
+    constructor(name, symbol) {
+      this.name = name;
       this.symbol = symbol;
     }
 }

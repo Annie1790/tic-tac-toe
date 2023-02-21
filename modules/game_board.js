@@ -1,31 +1,9 @@
 import ui from "./ui.js";
-import { Player } from "./player.js";
-
+import { Game } from "./game.js";
+import { Cell } from "./cell.js";
 //delegate pattern
 
-class Game {
-    constructor() {
-        this.gameBoard = new GameBoard(this);
-        this.player1 = new Player("player 1", "X");
-        this.player2 = new Player("player 2", "O");
-        this.activePlayer = this.player1;
-    }
-
-    onRoundComplete(isGameEnded) {
-        if (isGameEnded === false) {
-            if (this.activePlayer === this.player1) {
-                this.activePlayer = this.player2;
-            } else if (this.activePlayer === this.player2) {
-                this.activePlayer = this.player1;
-            }
-        } else {
-            alert(`${this.activePlayer.player} won!`)
-        }
-        console.log(this)
-    }
-}
-
-class GameBoard {
+export class GameBoard {
     constructor(game) {
         this.cells = [];
 
@@ -36,34 +14,31 @@ class GameBoard {
     }
 
     onCellTicked() {
-        //to do: 
-        //check if current user won
-        let isGameEnded = false;
-        console.log(this)
+        let isGameEnded = this.checkWinningGame();
+        console.log(this,isGameEnded)
         this.game.onRoundComplete(isGameEnded);
     }
-}
 
-class Cell {
-    constructor(index, gameBoard, game) {
-        this.element = ui.cells[index];
-        this.index = index;
-        this.element.addEventListener("click", () => {
-            this.onClicked()
-        }, { once: true })
-        this.gameBoard = gameBoard;
-        this.game = game;
+    checkWinningGame() {
+        const winningIndexes = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [2, 4, 6],
+            [0, 4, 8]
+        ]
+
+        let result = winningIndexes.some((conditions) => {
+            return conditions.every((index) => {
+                return this.cells[index].content === this.game.activePlayerSymbol;
+            })
+        })
+        return result;
     }
-
-    onClicked() {
-        //to do: 
-        //draw x or O based on the active player
-        this.element.innerHTML = this.game.activePlayer.symbol;
-        console.log(this)
-        this.gameBoard.onCellTicked();
-    }
 }
-
 
 let game = new Game();
 
