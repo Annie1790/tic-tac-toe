@@ -1,4 +1,3 @@
-import ui from "./ui.js";
 import { Game } from "./game.js";
 import { Cell } from "./cell.js";
 //delegate pattern
@@ -11,6 +10,17 @@ export class GameBoard {
             this.cells.push(new Cell(i, this, game))
         }
         this.game = game;
+    }
+
+    get emptyCells() {
+        const result = [];
+
+        this.cells.forEach((cell) => {
+            if (cell.content == "") {
+                result.push(cell)
+            }
+        })
+        return result;
     }
 
     onCellTicked() {
@@ -39,6 +49,3 @@ export class GameBoard {
         return result;
     }
 }
-
-let game = new Game();
-

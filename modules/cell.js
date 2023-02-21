@@ -14,9 +14,9 @@ export class Cell {
     onClicked() {
         if (this.game.gameOver === false) {
             this.content = this.game.activePlayerSymbol;
-        console.log(this)
-        this.gameBoard.onCellTicked();
-        } 
+            console.log(this)
+            this.gameBoard.onCellTicked();
+        }
     }
 
     get content() {
