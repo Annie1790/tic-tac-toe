@@ -1,5 +1,6 @@
 const ui = {
-    cells: document.querySelectorAll("[data-cells]")
+    cells: document.querySelectorAll("[data-cells]"),
+    restart: document.querySelector("#restart")
 }
 
 export default ui;

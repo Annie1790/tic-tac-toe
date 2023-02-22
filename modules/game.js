@@ -1,5 +1,6 @@
 import { Player, AiPlayer } from "./player.js";
 import { GameBoard } from "./game_board.js";
+import ui from "./ui.js";
 
 export class Game {
     constructor() {
@@ -34,10 +35,14 @@ export class Game {
             }, 500)
             this.gameOver = true;
         }
-        console.log(this)
     }
     get activePlayerSymbol() {
         return this.activePlayer.symbol
     }
 }
+
 let game = new Game();
+
+ui.restart.addEventListener("click", () => {
+    window.location.reload()
+})

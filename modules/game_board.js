@@ -25,7 +25,6 @@ export class GameBoard {
 
     onCellTicked() {
         let isGameEnded = this.checkWinningGame();
-        console.log(this,isGameEnded)
         this.game.onRoundComplete(isGameEnded);
     }
 

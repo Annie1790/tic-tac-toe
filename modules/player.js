@@ -15,9 +15,7 @@ export class AiPlayer extends Player {
         this.gameBoard = gameBoard;
     }
     play() {
-        console.log("Ai playing")
         const result = this.gameBoard.emptyCells;
-        console.log(result)
         const randomCell = Math.floor(Math.random(result.length) *result.length)
         let cell = result[randomCell];
         setTimeout(() => {
